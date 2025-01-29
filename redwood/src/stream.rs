@@ -1,21 +1,23 @@
-use pyo3::types::PyBytes;
-use pyo3::{intern, PyAny, PyResult};
+use pyo3::types::{PyAnyMethods, PyBytes, PyTuple};
+use pyo3::{intern, Bound, PyAny, PyResult};
 use std::io::{self, ErrorKind, Read, Write};
 
 /// Wrapper to implement the `Read` trait around a Python
 /// object that contains a `.read()` function.
 pub(crate) struct Stream<'a> {
-    pub(crate) reader: &'a PyAny,
+    pub(crate) reader: Bound<'a, PyAny>,
 }
 
 impl Stream<'_> {
     /// Read the specified number of bytes out of the object
-    fn read_bytes(&self, len: usize) -> PyResult<&PyBytes> {
-        let func = self.reader.getattr(intern!(self.reader.py(), "read"))?;
+    fn read_bytes(&self, len: usize) -> PyResult<Vec<u8>> {
+        let func: Bound<'_, PyAny> =
+            self.reader.getattr(intern!(self.reader.py(), "read"))?;
         // In Python this is effectively calling `reader.read(len)`
-        let bytes = func.call1((len,))?;
+        let args: Bound<PyTuple> = PyTuple::new(self.reader.py(), vec![len])?;
+        let bytes: Bound<PyAny> = func.call1(args)?;
         let bytes = bytes.downcast::<PyBytes>()?;
-        Ok(bytes)
+        bytes.extract()
     }
 }
 
@@ -27,6 +29,6 @@ impl Read for Stream<'_> {
             // all of them as "other" for simplicity.
             io::Error::new(ErrorKind::Other, err.to_string())
         })?;
-        buf.write(bytes.as_bytes())
+        buf.write(bytes.as_slice())
     }
 }

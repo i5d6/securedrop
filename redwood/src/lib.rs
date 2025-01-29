@@ -61,14 +61,14 @@ const KEY_CREATION_SECONDS_FROM_EPOCH: u64 = 1368507600;
 
 /// A Python module implemented in Rust.
 #[pymodule]
-fn redwood(py: Python, m: &PyModule) -> PyResult<()> {
+fn redwood(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(generate_source_key_pair, m)?)?;
     m.add_function(wrap_pyfunction!(is_valid_public_key, m)?)?;
     m.add_function(wrap_pyfunction!(is_valid_secret_key, m)?)?;
     m.add_function(wrap_pyfunction!(encrypt_message, m)?)?;
     m.add_function(wrap_pyfunction!(encrypt_stream, m)?)?;
     m.add_function(wrap_pyfunction!(decrypt, m)?)?;
-    m.add("RedwoodError", py.get_type::<RedwoodError>())?;
+    m.add("RedwoodError", m.py().get_type::<RedwoodError>())?;
     Ok(())
 }
 
@@ -124,7 +124,7 @@ pub fn is_valid_secret_key(input: &str, passphrase: String) -> Result<String> {
 /// Encrypt a message (text) for the specified recipients. The list of
 /// recipients is a set of PGP public keys. The encrypted message will
 /// be written to `destination`.
-#[pyfunction]
+#[pyfunction(signature = (recipients, plaintext, destination, armor=None))]
 pub fn encrypt_message(
     recipients: Vec<String>,
     plaintext: String,
@@ -141,7 +141,7 @@ pub fn encrypt_message(
 #[pyfunction]
 pub fn encrypt_stream(
     recipients: Vec<String>,
-    plaintext: &PyAny,
+    plaintext: Bound<PyAny>,
     destination: PathBuf,
 ) -> Result<()> {
     let stream = stream::Stream { reader: plaintext };
