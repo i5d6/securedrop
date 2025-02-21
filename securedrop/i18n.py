@@ -159,7 +159,7 @@ def validate_locale_configuration(config: SecureDropConfig, babel: Babel) -> Set
 
     missing = configured - usable
     if missing:
-        babel.app.logger.error(
+        babel.app.logger.warning(
             f"Configured locales {missing} are not in the set of usable locales {usable}"
         )
 
