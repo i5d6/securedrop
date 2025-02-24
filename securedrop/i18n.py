@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 import collections
+import json
+from pathlib import Path
 from typing import DefaultDict, List, OrderedDict, Set
 
 from babel.core import (
@@ -28,6 +30,8 @@ from babel.core import (
 from flask import Flask, current_app, g, request, session
 from flask_babel import Babel
 from sdconfig import FALLBACK_LOCALE, SecureDropConfig
+
+I18N_CONF = Path(__file__).parent / "i18n.json"
 
 
 class RequestLocaleInfo:
@@ -137,16 +141,25 @@ def validate_locale_configuration(config: SecureDropConfig, babel: Babel) -> Set
     available = set(babel.list_translations())
     available.add(Locale.parse(FALLBACK_LOCALE))
 
+    # These locales are supported in the current version of securedrop-app-code.
+    try:
+        with open(I18N_CONF) as i18n_conf_file:
+            i18n_conf = json.load(i18n_conf_file)
+        supported = parse_locale_set(i18n_conf["supported_locales"].keys())
+    # I18N_CONF may not be available under test.
+    except FileNotFoundError:
+        supported = available
+
     # These locales were configured via "securedrop-admin sdconfig", meaning
     # they were present on the Admin Workstation at "securedrop-admin" runtime.
     configured = parse_locale_set(config.SUPPORTED_LOCALES)
 
     # The intersection of these sets is the set of locales usable by Babel.
-    usable = available & configured
+    usable = available & configured & supported
 
     missing = configured - usable
     if missing:
-        babel.app.logger.error(
+        babel.app.logger.warning(
             f"Configured locales {missing} are not in the set of usable locales {usable}"
         )
 
