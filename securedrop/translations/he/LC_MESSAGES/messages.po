@@ -4,19 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: SecureDrop 0.4.3\n"
-"Report-Msgid-Bugs-To: securedrop@freedom.press\n"
-"PO-Revision-Date: 2023-11-15 15:30+0000\n"
-"Last-Translator: hwr2023 <avaknin@gmail.com>\n"
-"Language-Team: Hebrew <https://weblate.securedrop.org/projects/securedrop/securedrop/he/>\n"
-"Language: he\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.18.2\n"
-"Generated-By: Babel 2.4.0\n"
+msgstr "Project-Id-Version: SecureDrop 0.4.3\nReport-Msgid-Bugs-To: securedrop@freedom.press\nPO-Revision-Date: 2025-02-12 22:34+0000\nLast-Translator: magpie <magpie@users.noreply.weblate.securedrop.org>\nLanguage-Team: Hebrew <https://weblate.securedrop.org/projects/securedrop/securedrop/he/>\nLanguage: he\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\nX-Generator: Weblate 5.8.4\nGenerated-By: Babel 2.4.0\n"
 
 msgid "Name too long"
 msgstr "השם ארוך מדי"
@@ -36,7 +24,7 @@ msgid "{time} ago"
 msgstr "לפני {time}"
 
 msgid "You have been logged out due to inactivity or a problem with your session."
-msgstr ""
+msgstr "את(ה) נזרקה החוצה בגלל חןסר פעולה\\יש לך בעיות אחרות."
 
 msgid "SecureDrop"
 msgstr "SecureDrop"
@@ -374,7 +362,7 @@ msgid "No users to display"
 msgstr "אין משתמשים לתצוגה"
 
 msgid "Update instance configuration"
-msgstr ""
+msgstr "עדכן תצורה."
 
 msgid "INSTANCE CONFIG"
 msgstr "עדכן תצורה"
@@ -422,10 +410,10 @@ msgid "Can't scan the barcode? You can manually pair FreeOTP with this account b
 msgstr "לא מצליחים לסרוק את הברקוד? ניתן לשייך FreeOTP באופן ידני לחשבון זה על ידי הזנת הקוד הדו-שלבי הבא באפליקציה:"
 
 msgid "<strong>Critical:</strong>&nbsp;&nbsp;The operating system used by your SecureDrop servers has reached its end-of-life. A manual update is required to re-enable the Source Interface and remain safe. Please contact your administrator. <a href=\"https://securedrop.org/focal-eol\" rel=\"noreferrer\">Learn More</a>"
-msgstr ""
+msgstr "<strong>קריטי:</strong>&nbsp;&nbsp;מערכת ההפעלה המשמשת את שרתי SecureDrop שלך הגיעה לסוף חייה. נדרש עדכון ידני כדי להפעיל מחדש את ממשק המקור ולהישאר בטוח. אנא פנה למנהל המערכת שלך. <a href=\"https://securedrop.org/focal-eol\" rel=\"noreferrer\">צריך מידע נוסף</a>"
 
 msgid "<strong>Important:</strong>&nbsp;&nbsp;Your SecureDrop server needs manual attention to resolve issues blocking automatic upgrade to the next operating-system version. Please contact your adminstrator. <a href=\"https://securedrop.org/focal-eol\" rel=\"noreferrer\">Learn More</a>"
-msgstr ""
+msgstr "<strong>חשוב מאוד,</strong>שרת SecureDrop שלך זקוק לטיפול ידני כדי לפתור בעיות החוסמות שדרוג אוטומטי לגרסת מערכת ההפעלה הבאה. אנא צור קשר עם המנהל שלך.<a href=\"https://securedrop.org/focal-eol\" rel=\"noreferrer\">תלמד יותר</a>"
 
 msgid "Navigation"
 msgstr "ניווט"
@@ -443,7 +431,7 @@ msgid "Log Out"
 msgstr "התנתק"
 
 msgid "Return to All Sources"
-msgstr ""
+msgstr "תחזור לכל המקורות"
 
 msgid "Powered by <b>SecureDrop {version}</b>."
 msgstr "Powered by <b>SecureDrop {version}</b>."
@@ -458,13 +446,13 @@ msgid "All messages, files, and replies from sources are stored as encrypted fil
 msgstr "כל ההודעות, הקבצים והתשובות ממקורות מאוחסנים כקבצים מוצפנים לצורך אבטחה. כדי לקרוא אותם, תצטרך לפענח אותם בתחנת הצפייה המאובטחת שלך."
 
 msgid "Download Selected Files"
-msgstr ""
+msgstr "הורד קבצים נבחרים"
 
 msgid "Download Selected"
 msgstr "הורד נבחרים"
 
 msgid "Delete Selected Files"
-msgstr ""
+msgstr "מחק קבצים נבחרים"
 
 msgid "Delete Selected"
 msgstr "מחק נבחרים"
@@ -694,25 +682,25 @@ msgid "Reset Security Key Credentials"
 msgstr "איפוס נתוני מפתח הצפנה"
 
 msgid "Download Selected Unread Submissions"
-msgstr ""
+msgstr "הורד קבצים נבחרים שלא נקראו"
 
 msgid "Download Unread"
 msgstr "הורדת הודעות שלא נקראו"
 
 msgid "Download Selected Submissions"
-msgstr ""
+msgstr "הורד קבצים נבחרים."
 
 msgid "Download"
 msgstr "הורדה"
 
 msgid "Star Selected Submissions"
-msgstr ""
+msgstr "סמן כוכב קבצים נבחרים"
 
 msgid "Star"
 msgstr "סמן כוכב"
 
 msgid "Un-star Selected Submissions"
-msgstr ""
+msgstr "הסר כוכב קבצים נבחרים"
 
 msgid "Un-star"
 msgstr "הסר כוכב"
@@ -730,7 +718,7 @@ msgid "Date"
 msgstr "תאריך"
 
 msgid "There are no submissions."
-msgstr ""
+msgstr "אין קבצים נבחרים."
 
 msgid "Filter by codename"
 msgstr "סינון לפי שם קוד"
@@ -766,7 +754,7 @@ msgid "Show password"
 msgstr "הצגת סיסמה"
 
 msgid "Log In to Journalist Interface"
-msgstr ""
+msgstr "היכנס לגשת לממשק העיתונאי"
 
 msgid "LOG IN"
 msgstr "כניסה"
@@ -843,7 +831,7 @@ msgid "Important"
 msgstr "חשוב"
 
 msgid "You have been logged out due to inactivity or a problem with your session. Click the <img src={icon} alt=\"\" width=\"16\" height=\"16\">&nbsp;<b>New Identity</b> button in your Tor Browser's toolbar before moving on. This will clear your Tor Browser activity data on this device."
-msgstr ""
+msgstr "את(ה) נזרקה החוצה בגלל חןסר פעולה\\יש לך בעיות אחרות. לחץ על הלחצן <img src={icon} alt=\"\" width=\"16\" height=\"16\">&nbsp;<b>זהות חדשה</b> בסרגל הכלים של דפדפן Tor שלך לפני שתמשיך הלאה. פעולה זו תנקה את נתוני הפעילות של דפדפן Tor במכשיר זה."
 
 msgid "Protecting Journalists and Sources"
 msgstr "הגנה על עיתונאים ומקורות"
@@ -852,10 +840,10 @@ msgid "Skip to notification"
 msgstr "דלג להתראה"
 
 msgid "Return to Submission Page"
-msgstr ""
+msgstr "חזור לעמוד הטופס"
 
 msgid "Return to Home Page"
-msgstr ""
+msgstr "חזור לעמוד הבית"
 
 msgid "We're sorry, our SecureDrop is currently offline."
 msgstr "אנו מצטערים, ה-SecureDrop שלנו לא פעיל כרגע."
@@ -900,7 +888,7 @@ msgid "<strong>Keep it safe.</strong> There is no account recovery option."
 msgstr "<strong>שמור במקום בטוח.</strong> אין אפשרות לשחזור חשבון."
 
 msgid "Continue to Submission Page"
-msgstr ""
+msgstr "תמשיך לעמוד הטופס"
 
 msgid "Welcome"
 msgstr "ברוכים הבאים"
@@ -927,7 +915,7 @@ msgid "<strong>It is recommended to use Tor Browser to access SecureDrop:</stron
 msgstr "<strong>מומלץ להשתמש בדפדפן Tor כדי לגשת אל SecureDrop:</strong> <a class=\"recommend-tor\" href=\"{tor_browser_url}\">למד כיצד להתקין אותו</a>, או התעלם מהאזהרה זו כדי להמשיך."
 
 msgid "<strong>It is recommended you use the desktop version of Tor Browser to access SecureDrop, as Orfox does not provide the same level of security and anonymity as the desktop version.</strong> <a class=\"recommend-tor\" aria-label=\"Learn how to install Tor Browser\" href=\"{tor_browser_url}\" >Learn how to install it</a>, or ignore this warning to continue."
-msgstr ""
+msgstr "<strong>מומלץ להשתמש בגרסת שולחן העבודה של Tor Browser כדי לגשת ל-SecureDrop, מכיוון ש-Orfox לא מספקת את אותה רמת אבטחה ואנונימיות כמו גרסת שולחן העבודה.</strong><a class=\"recommend-tor\" aria-label=\"Learn how to install Tor Browser\" href=\"{tor_browser_url}\" >למד כיצד להתקין אותו</a>, או התעלם מהאזהרה זו כדי להמשיך."
 
 msgid "{} logo"
 msgstr "לוגו של {}"
@@ -939,7 +927,7 @@ msgid "First time submitting to our SecureDrop? Start here."
 msgstr "פעם ראשונה ב-SecureDrop שלנו? התחל כאן."
 
 msgid "Get Started With Your First Submission"
-msgstr ""
+msgstr "תתחיל עם הטופס הראשון"
 
 msgid "GET STARTED"
 msgstr "התחל"
@@ -951,7 +939,7 @@ msgid "Already have a codename? Check for replies or submit something new."
 msgstr "כבר יש לך שם קוד? בדוק אם יש תשובות או שלח משהו חדש."
 
 msgid "Log In Using Your Codename"
-msgstr ""
+msgstr "כניסה לשם-קוד"
 
 msgid "Log in"
 msgstr "כניסה"
@@ -963,7 +951,7 @@ msgid "Enter your codename"
 msgstr "הזן את שם הקוד שלך"
 
 msgid "Cancel and Return to Previous Page"
-msgstr ""
+msgstr "בטל ותחזור לעמוד הקודם"
 
 msgid "CANCEL"
 msgstr "ביטול"
@@ -972,7 +960,7 @@ msgid "Additional Action Required"
 msgstr "נדרשת פעולה נוספת"
 
 msgid "Log Back In"
-msgstr ""
+msgstr "כנס בחזרה‫"
 
 msgid "One more thing..."
 msgstr "עוד דבר אחד..."
@@ -1008,10 +996,10 @@ msgid "Anti-spam check. Do not fill this in!"
 msgstr "בדיקת אנטי ספאם. אל תמלא את זה!"
 
 msgid "Cancel and Clear Uploaded Content"
-msgstr ""
+msgstr "בטל ותבטל קובץ שעולה"
 
 msgid "Submit Uploaded Content"
-msgstr ""
+msgstr "שלח קובץ שעולה"
 
 msgid "Read Replies"
 msgstr "מענה מהמערכת"
@@ -1026,7 +1014,7 @@ msgid "Delete reply from {timestamp}?"
 msgstr "למחוק את התשובה מ-{timestamp}?"
 
 msgid "Delete Reply"
-msgstr ""
+msgstr "בטל תשובה"
 
 msgid "Delete All Replies"
 msgstr "מחיקת כל התשובות"
@@ -1065,7 +1053,7 @@ msgid "Always use Tor Browser (<code>{}</code>) to access SecureDrop. Valid Secu
 msgstr "השתמש תמיד בדפדפן Tor (<code>{}</code>) כדי לגשת ל-SecureDrop. כתובות אתר SecureDrop חוקיות מסתיימות ב-<code>.onion</code>. הכתובת הנכונה לאתר זה היא:"
 
 msgid "If you are already using Tor Browser, copy the address above and click Tor Browser's <strong>New Identity</strong> button before you access SecureDrop."
-msgstr ""
+msgstr "אם אתה כבר משתמש בדפדפן Tor, העתק את הכתובת למעלה ולחץ על כפתור <strong>זהות חדשה</strong> של Tor Browser לפני שתיגש ל-SecureDrop."
 
 msgid "If there is a reasonable risk of your Internet traffic being monitored, consider connecting from a different location or network."
 msgstr "אם קיים סיכון סביר למעקב אחר תעבורת האינטרנט שלך, שקול להתחבר ממיקום אחר או מרשת אחרת."
@@ -1092,7 +1080,7 @@ msgid "Codename"
 msgstr "שם קוד"
 
 msgid "Reveal Codename"
-msgstr ""
+msgstr "הראה שם-קוד"
 
 msgid "Show Codename"
 msgstr "הצג שם קוד"
