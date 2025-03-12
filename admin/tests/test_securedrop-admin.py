@@ -650,7 +650,7 @@ class TestSiteConfig:
             root=tmpdir,
         )
         site_config = securedrop_admin.SiteConfig(args)
-        assert site_config.sanitize_fingerprint("    A bc") == "ABC"
+        assert site_config.sanitize_fingerprint("    A bc\n") == "ABC"
 
     def test_validate_int(self):
         validator = securedrop_admin.SiteConfig.ValidateInt()

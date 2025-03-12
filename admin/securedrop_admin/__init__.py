@@ -609,7 +609,7 @@ class SiteConfig:
             return value
 
     def sanitize_fingerprint(self, value: str) -> str:
-        return value.upper().replace(" ", "")
+        return value.upper().replace(" ", "").strip()
 
     def validate_gpg_keys(self) -> bool:
         keys = (
