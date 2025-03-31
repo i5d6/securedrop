@@ -2,6 +2,14 @@
 
 ## 2.13.0~rc1
 
+## 2.12.1
+
+Note: this is an Admin Workstation-only release. Servers will not receive an update.
+
+### Ubuntu 24.04 (Noble) upgrade
+
+* Make noble-migration playbook smarter for SSH-over-Tor (#7484)
+* Extend reboot timeout to 600 seconds (#7484)
 
 ## 2.12.0
 
@@ -28,7 +36,7 @@
 * Add support for disabling previously-supported languages (#7443, #7451)
 * Ignore Safety alerts:
   * Ignore Safety 73969 in `jinja2` (#7402)
-* Update dependencies: 
+* Update dependencies:
 * Update Rust `openssl` dependency to  0.10.70 (#7435)
 
 ### Operations
