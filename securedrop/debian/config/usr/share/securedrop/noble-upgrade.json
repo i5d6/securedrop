@@ -1,7 +1,7 @@
 {
     "app": {
-        "enabled": false,
-        "bucket": 0
+        "enabled": true,
+        "bucket": 1
     },
     "mon": {
         "enabled": false,
