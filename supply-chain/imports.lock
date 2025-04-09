@@ -176,15 +176,15 @@ user-login = "cuviper"
 user-name = "Josh Stone"
 
 [[publisher.openssl]]
-version = "0.10.68"
-when = "2024-10-16"
+version = "0.10.72"
+when = "2025-04-04"
 user-id = 163
 user-login = "alex"
 user-name = "Alex Gaynor"
 
 [[publisher.openssl-sys]]
-version = "0.9.104"
-when = "2024-10-16"
+version = "0.9.107"
+when = "2025-04-04"
 user-id = 163
 user-login = "alex"
 user-name = "Alex Gaynor"

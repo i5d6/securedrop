@@ -476,6 +476,13 @@ start = "2023-03-24"
 end = "2025-01-22"
 notes = "Rust Project member"
 
+[[trusted.openssl]]
+criteria = "safe-to-deploy"
+user-id = 163 # Alex Gaynor (alex)
+start = "2023-03-24"
+end = "2025-10-09"
+notes = "Rust Project member"
+
 [[trusted.openssl-sys]]
 criteria = "safe-to-deploy"
 user-id = 5
@@ -495,6 +502,13 @@ criteria = "safe-to-deploy"
 user-id = 163 # Alex Gaynor (alex)
 start = "2023-03-24"
 end = "2025-01-22"
+notes = "Rust Project member"
+
+[[trusted.openssl-sys]]
+criteria = "safe-to-deploy"
+user-id = 163 # Alex Gaynor (alex)
+start = "2023-03-24"
+end = "2025-10-09"
 notes = "Rust Project member"
 
 [[trusted.parking_lot]]
