@@ -104,6 +104,11 @@ who = "Kunal Mehta <legoktm@debian.org>"
 criteria = "safe-to-run"
 version = "0.6.5"
 
+[[audits.memoffset]]
+who = "Kunal Mehta <legoktm@debian.org>"
+criteria = "safe-to-run"
+delta = "0.9.0 -> 0.9.1"
+
 [[audits.memsec]]
 who = "Kunal Mehta <legoktm@debian.org>"
 criteria = "safe-to-run"
@@ -506,12 +511,54 @@ start = "2019-05-04"
 end = "2024-04-10"
 notes = "Rust Project member"
 
+[[trusted.portable-atomic]]
+criteria = "safe-to-deploy"
+user-id = 33035 # Taiki Endo (taiki-e)
+start = "2022-02-24"
+end = "2025-10-09"
+notes = "Rust Project member"
+
 [[trusted.proc-macro2]]
 criteria = "safe-to-deploy"
 user-id = 3618 # David Tolnay (dtolnay)
 start = "2019-04-23"
 end = "2024-04-10"
 notes = "Rust Project member"
+
+[[trusted.pyo3]]
+criteria = "safe-to-run"
+user-id = 6622 # David Hewitt (davidhewitt)
+start = "2020-09-12"
+end = "2025-10-09"
+notes = "per https://github.com/freedomofpress/securedrop-engineering/issues/112"
+
+[[trusted.pyo3-build-config]]
+criteria = "safe-to-deploy"
+user-id = 6622 # David Hewitt (davidhewitt)
+start = "2021-05-25"
+end = "2025-10-09"
+notes = "per https://github.com/freedomofpress/securedrop-engineering/issues/112"
+
+[[trusted.pyo3-ffi]]
+criteria = "safe-to-deploy"
+user-id = 6622 # David Hewitt (davidhewitt)
+start = "2022-02-27"
+end = "2025-10-09"
+notes = "per https://github.com/freedomofpress/securedrop-engineering/issues/112"
+
+[[trusted.pyo3-macros]]
+criteria = "safe-to-deploy"
+user-id = 6622 # David Hewitt (davidhewitt)
+start = "2020-12-20"
+end = "2025-10-09"
+notes = "per https://github.com/freedomofpress/securedrop-engineering/issues/112"
+
+[[trusted.pyo3-macros-backend]]
+criteria = "safe-to-deploy"
+user-id = 6622 # David Hewitt (davidhewitt)
+start = "2020-12-20"
+end = "2025-10-09"
+notes = "per https://github.com/freedomofpress/securedrop-engineering/issues/112"
 
 [[trusted.quote]]
 criteria = "safe-to-deploy"
@@ -630,6 +677,13 @@ criteria = "safe-to-deploy"
 user-id = 6825 # Dan Gohman (sunfishcode)
 start = "2019-03-06"
 end = "2024-04-10"
+notes = "Rust Project member"
+
+[[trusted.target-lexicon]]
+criteria = "safe-to-deploy"
+user-id = 6825 # Dan Gohman (sunfishcode)
+start = "2019-03-06"
+end = "2025-10-09"
 notes = "Rust Project member"
 
 [[trusted.thiserror]]
