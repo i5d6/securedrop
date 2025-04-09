@@ -121,8 +121,8 @@ user-login = "cuviper"
 user-name = "Josh Stone"
 
 [[publisher.indoc]]
-version = "1.0.9"
-when = "2023-01-29"
+version = "2.0.5"
+when = "2024-03-23"
 user-id = 3618
 user-login = "dtolnay"
 user-name = "David Tolnay"
@@ -176,15 +176,15 @@ user-login = "cuviper"
 user-name = "Josh Stone"
 
 [[publisher.openssl]]
-version = "0.10.68"
-when = "2024-10-16"
+version = "0.10.72"
+when = "2025-04-04"
 user-id = 163
 user-login = "alex"
 user-name = "Alex Gaynor"
 
 [[publisher.openssl-sys]]
-version = "0.9.104"
-when = "2024-10-16"
+version = "0.9.107"
+when = "2025-04-04"
 user-id = 163
 user-login = "alex"
 user-name = "Alex Gaynor"
@@ -203,12 +203,54 @@ user-id = 2915
 user-login = "Amanieu"
 user-name = "Amanieu d'Antras"
 
+[[publisher.portable-atomic]]
+version = "1.10.0"
+when = "2024-11-23"
+user-id = 33035
+user-login = "taiki-e"
+user-name = "Taiki Endo"
+
 [[publisher.proc-macro2]]
 version = "1.0.79"
 when = "2024-03-12"
 user-id = 3618
 user-login = "dtolnay"
 user-name = "David Tolnay"
+
+[[publisher.pyo3]]
+version = "0.24.1"
+when = "2025-03-31"
+user-id = 6622
+user-login = "davidhewitt"
+user-name = "David Hewitt"
+
+[[publisher.pyo3-build-config]]
+version = "0.24.1"
+when = "2025-03-31"
+user-id = 6622
+user-login = "davidhewitt"
+user-name = "David Hewitt"
+
+[[publisher.pyo3-ffi]]
+version = "0.24.1"
+when = "2025-03-31"
+user-id = 6622
+user-login = "davidhewitt"
+user-name = "David Hewitt"
+
+[[publisher.pyo3-macros]]
+version = "0.24.1"
+when = "2025-03-31"
+user-id = 6622
+user-login = "davidhewitt"
+user-name = "David Hewitt"
+
+[[publisher.pyo3-macros-backend]]
+version = "0.24.1"
+when = "2025-03-31"
+user-id = 6622
+user-login = "davidhewitt"
+user-name = "David Hewitt"
 
 [[publisher.regex]]
 version = "1.10.0"
@@ -281,13 +323,6 @@ user-login = "teythoon"
 user-name = "Justus Winter"
 
 [[publisher.syn]]
-version = "1.0.109"
-when = "2023-02-24"
-user-id = 3618
-user-login = "dtolnay"
-user-name = "David Tolnay"
-
-[[publisher.syn]]
 version = "2.0.87"
 when = "2024-11-02"
 user-id = 3618
@@ -295,8 +330,8 @@ user-login = "dtolnay"
 user-name = "David Tolnay"
 
 [[publisher.target-lexicon]]
-version = "0.12.11"
-when = "2023-07-31"
+version = "0.13.2"
+when = "2025-02-07"
 user-id = 6825
 user-login = "sunfishcode"
 user-name = "Dan Gohman"
@@ -323,8 +358,8 @@ user-login = "dtolnay"
 user-name = "David Tolnay"
 
 [[publisher.unindent]]
-version = "0.1.11"
-when = "2022-12-17"
+version = "0.2.3"
+when = "2023-09-16"
 user-id = 3618
 user-login = "dtolnay"
 user-name = "David Tolnay"
@@ -408,6 +443,12 @@ who = "Alex Crichton <alex@alexcrichton.com>"
 criteria = "safe-to-deploy"
 delta = "0.7.1 -> 0.8.0"
 notes = "This was a small update to the crate which has to do with Rust language features and compiler versions, no substantial changes."
+
+[[audits.bytecode-alliance.audits.memoffset]]
+who = "Alex Crichton <alex@alexcrichton.com>"
+criteria = "safe-to-deploy"
+delta = "0.8.0 -> 0.9.0"
+notes = "No major changes in the crate, mostly updates to use new nightly Rust features."
 
 [[audits.bytecode-alliance.audits.miniz_oxide]]
 who = "Alex Crichton <alex@alexcrichton.com>"
@@ -539,6 +580,12 @@ notes = """
 While this crate provides crypto methods, they all defer to system or hardware
 crypto implementations. Hence, this crate does not implement crypto.
 """
+aggregated-from = "https://chromium.googlesource.com/chromiumos/third_party/rust_crates/+/refs/heads/main/cargo-vet/audits.toml?format=TEXT"
+
+[[audits.google.audits.heck]]
+who = "Ying Hsu <yinghsu@chromium.org>"
+criteria = "safe-to-run"
+version = "0.5.0"
 aggregated-from = "https://chromium.googlesource.com/chromiumos/third_party/rust_crates/+/refs/heads/main/cargo-vet/audits.toml?format=TEXT"
 
 [[audits.google.audits.humantime]]
