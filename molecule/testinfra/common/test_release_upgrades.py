@@ -56,7 +56,7 @@ def test_migration_check(host):
         contents = json.loads(cmd.stdout)
         print(contents)
         # The script did not error out
-        if "error" in contents:
+        if "error" in contents or not all(contents.values()):
             # Run the script manually to get the error message
             cmd = host.run("securedrop-noble-migration-check")
             print(cmd.stdout)
