@@ -118,6 +118,18 @@
 </group>
 
 <group name="do not alert">
+  <rule id="199994" level="0">
+    <match>Download data for packages that failed at package install time</match>
+    <description>ignore update_notifier_download.service text with "failed" string (https://github.com/freedomofpress/securedrop/issues/7491)</description>
+    <options>no_email_alert</options>
+   </rule>
+
+  <rule id="199995" level="0">
+    <match>Warning: W:Download is performed unsandboxed as root as file</match>
+    <description>ignore apt_news text with "warning" string (https://github.com/freedomofpress/securedrop/issues/7491)</description>
+    <options>no_email_alert</options>
+   </rule>
+
   <rule id="199996" level="0">
     <match>NameError: name 'hasattr' is not defined</match>
     <description>ignore NameError on builtin hasattr() at mod_wsgi teardown (https://github.com/freedomofpress/securedrop/issues/6866)</description>

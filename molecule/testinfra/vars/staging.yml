@@ -132,6 +132,20 @@ log_events_without_ossec_alerts:
     level: "0"
     rule_id: "199996"
 
+  # #7491
+  - name: Update_notifier_download_failed_text_no_alert
+    alert: >
+        Download data for packages that failed at package install time
+    level: "0"
+    rule_id: "199994"
+
+  # #7491
+  - name: apt_news_warning_text_no_alert
+    alert: >
+        Warning: W:Download is performed unsandboxed as root as file
+    level: "0"
+    rule_id: "199995"
+
   # OSSEC should not alert when "manage.py check-disconnected-{db,fs}-
   # submissions" has logged that there are no disconnected submissions.
   - name: test_no_disconnected_db_submissions_produces_alert
