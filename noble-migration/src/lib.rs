@@ -1,6 +1,6 @@
 //! Common code for the noble-migration that is used by check and upgrade
 use anyhow::{bail, Context, Result};
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use std::{
     fs,
     path::Path,
@@ -16,6 +16,7 @@ pub struct State {
     free_space: bool,
     apt: bool,
     systemd: bool,
+    ethernet: bool,
 }
 
 impl State {
@@ -25,7 +26,7 @@ impl State {
 
     /// For when developers inject extra APT sources for testing
     pub fn is_ready_except_apt(&self) -> bool {
-        self.ssh && self.ufw && self.free_space && self.systemd
+        self.ssh && self.ufw && self.free_space && self.systemd && self.ethernet
     }
 }
 
@@ -259,6 +260,45 @@ pub fn check_systemd() -> Result<bool> {
     }
 }
 
+#[derive(Deserialize)]
+struct IpInterface {
+    ifname: String,
+    operstate: String,
+}
+
+fn check_ethernet() -> Result<bool> {
+    let output = process::Command::new("ip")
+        .args(["-json", "-brief", "addr", "show"])
+        .output()?;
+    if !output.status.success() {
+        bail!(
+            "invoking ip failed: {}",
+            String::from_utf8_lossy(&output.stderr)
+        );
+    }
+    parse_ip_output(&output.stdout)
+}
+
+fn parse_ip_output(stdout: &[u8]) -> Result<bool> {
+    let interfaces: Vec<IpInterface> = serde_json::from_slice(stdout)?;
+    let mut down = vec![];
+    for interface in interfaces {
+        if interface.ifname == "lo" {
+            // skip loopback
+            continue;
+        }
+        if interface.operstate != "UP" {
+            down.push(interface.ifname);
+        }
+    }
+    if !down.is_empty() {
+        println!("ethernet ERROR: interfaces are down: {down:?}");
+        return Ok(false);
+    }
+    println!("ethernet OK: all interfaces are up");
+    Ok(true)
+}
+
 pub fn run_checks() -> Result<State> {
     Ok(State {
         ssh: check_ssh_group()?,
@@ -266,6 +306,7 @@ pub fn run_checks() -> Result<State> {
         free_space: check_free_space()?,
         apt: check_apt()?,
         systemd: check_systemd()?,
+        ethernet: check_ethernet()?,
     })
 }
 
@@ -303,5 +344,21 @@ mod tests {
 
         assert_eq!(output.total, 105089261568);
         assert_eq!(output.free, 91129991168);
+    }
+
+    #[test]
+    fn test_parse_netplan_output() {
+        // one interface that's UP (prod) -> true
+        let input = br#"[{"ifname":"lo","operstate":"UNKNOWN","addr_info":[{"local":"127.0.0.1","prefixlen":8}]},{"ifname":"enp89s0","operstate":"UP","addr_info":[{"local":"10.20.2.2","prefixlen":24}]}]"#;
+        let output = parse_ip_output(input).unwrap();
+        assert!(output);
+        // one UP and one DOWN -> false
+        let input2 = br#"[{"ifname":"lo","operstate":"UNKNOWN","addr_info":[{"local":"127.0.0.1","prefixlen":8}]},{"ifname":"eth0","operstate":"DOWN", "addr_info":[]},{"ifname":"eth1","operstate":"UP","addr_info":[{"local":"10.0.1.3","prefixlen":24}]}]"#;
+        let output2 = parse_ip_output(input2).unwrap();
+        assert!(!output2);
+        // two UP interfaces (staging) -> true
+        let input3 = br#"[{"ifname":"lo","operstate":"UNKNOWN","addr_info":[{"local":"127.0.0.1","prefixlen":8}]},{"ifname":"eth0","operstate":"UP","addr_info":[{"local":"192.168.121.247","prefixlen":24,"metric":100}]},{"ifname":"eth1","operstate":"UP","addr_info":[{"local":"10.0.1.3","prefixlen":24}]}]"#;
+        let output3 = parse_ip_output(input3).unwrap();
+        assert!(output3);
     }
 }
