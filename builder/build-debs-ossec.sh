@@ -30,3 +30,4 @@ source /etc/os-release
 mv -v ../*.{buildinfo,changes,deb,tar.gz} "/src/build/${VERSION_CODENAME}"
 cd "/src/build/${VERSION_CODENAME}"
 sha256sum ./*
+chown -R "$HOST_UID:$HOST_GID" "/src/build/${VERSION_CODENAME}"

@@ -8,12 +8,12 @@ git --no-pager log -1 --oneline --show-signature --no-color
 
 export UBUNTU_VERSION="${UBUNTU_VERSION:-focal}"
 
+OCI_RUN_ARGUMENTS="--user=root -v $(pwd):/src:Z -e HOST_UID=$(id -u) -e HOST_GID=$(id -g)"
+
 # Setuptools_scm 8.3.0 breaks focal builds - so let's temporarily constrain it to 8.1.0
 TMP_CONSTRAINT="/srv/securedrop/requirements/python3/constraints.txt"
 if [[ $UBUNTU_VERSION == "focal" ]]; then
-    OCI_RUN_ARGUMENTS="-e PIP_CONSTRAINT=${TMP_CONSTRAINT} --user=root -v $(pwd):/src:Z"
-else
-    OCI_RUN_ARGUMENTS="--user=root -v $(pwd):/src:Z"
+    OCI_RUN_ARGUMENTS="-e PIP_CONSTRAINT=${TMP_CONSTRAINT} ${OCI_RUN_ARGUMENTS}"
 fi
 
 # Default to podman if available
