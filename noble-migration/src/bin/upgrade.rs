@@ -35,8 +35,8 @@ const EXTRA_APT_SOURCE: &str = "EXTRA_APT_SOURCE";
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug)]
 enum Stage {
     None,
-    PendingUpdates,
     MigrationCheck,
+    PendingUpdates,
     DisableApache2,
     Backup,
     BackupIptables,
@@ -118,14 +118,14 @@ impl State {
 fn run_next_stage(state: &mut State) -> Result<()> {
     match state.finished {
         Stage::None => {
-            pending_updates(state)?;
-            unreachable!("script should have already exited/rebooted");
-        }
-        Stage::PendingUpdates => {
             migration_check()?;
             state.set(Stage::MigrationCheck)?;
         }
         Stage::MigrationCheck => {
+            pending_updates(state)?;
+            unreachable!("script should have already exited/rebooted");
+        }
+        Stage::PendingUpdates => {
             disable_apache2()?;
             state.set(Stage::DisableApache2)?;
         }
@@ -273,27 +273,7 @@ fn is_mon_server() -> bool {
     Path::new("/usr/share/doc/securedrop-ossec-server/copyright").exists()
 }
 
-/// Step 1: Apply any pending updates
-///
-/// Explicitly run unattended-upgrade, then disable it and reboot
-fn pending_updates(state: &mut State) -> Result<()> {
-    info!("Applying any pending updates...");
-    check_call("apt-get", &["update"])?;
-    check_call_nokill("unattended-upgrade", &[])?;
-    // Disable all background updates pre-reboot so we know it's fully
-    // disabled when we come back.
-    info!("Temporarily disabling background updates...");
-    check_call("systemctl", &["mask", "unattended-upgrades"])?;
-    check_call("systemctl", &["mask", "apt-daily"])?;
-    check_call("systemctl", &["mask", "apt-daily-upgrade"])?;
-    state.set(Stage::PendingUpdates)?;
-    check_call("systemctl", &["reboot"])?;
-    // Because we've initiated the reboot, do a hard stop here to ensure that
-    // we don't keep moving forward if the reboot doesn't happen instantly
-    process::exit(0);
-}
-
-/// Step 2: Run the migration check
+/// Step 1: Run the migration check
 ///
 /// Run the same migration check as a final verification step before
 /// we begin
@@ -316,6 +296,26 @@ fn migration_check() -> Result<()> {
     }
 
     Ok(())
+}
+
+/// Step 2: Apply any pending updates
+///
+/// Explicitly run unattended-upgrade, then disable it and reboot
+fn pending_updates(state: &mut State) -> Result<()> {
+    info!("Applying any pending updates...");
+    check_call("apt-get", &["update"])?;
+    check_call_nokill("unattended-upgrade", &[])?;
+    // Disable all background updates pre-reboot so we know it's fully
+    // disabled when we come back.
+    info!("Temporarily disabling background updates...");
+    check_call("systemctl", &["mask", "unattended-upgrades"])?;
+    check_call("systemctl", &["mask", "apt-daily"])?;
+    check_call("systemctl", &["mask", "apt-daily-upgrade"])?;
+    state.set(Stage::PendingUpdates)?;
+    check_call("systemctl", &["reboot"])?;
+    // Because we've initiated the reboot, do a hard stop here to ensure that
+    // we don't keep moving forward if the reboot doesn't happen instantly
+    process::exit(0);
 }
 
 /// Step 3: Disable apache2
