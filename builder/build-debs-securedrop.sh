@@ -39,3 +39,4 @@ for file in *.ddeb; do
     mv "$file" "${file%.ddeb}.deb";
 done
 sha256sum ./*
+chown -R "$HOST_UID:$HOST_GID" "/src/build/${VERSION_CODENAME}"
