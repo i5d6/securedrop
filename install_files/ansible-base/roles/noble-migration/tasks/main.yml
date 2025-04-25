@@ -5,8 +5,8 @@
     # Keep in sync with upgrade.rs
     stages:
       - 'None'
-      - 'PendingUpdates'
       - 'MigrationCheck'
+      - 'PendingUpdates'
       - 'DisableApache2'
       - 'Backup'
       - 'BackupIptables'
@@ -103,8 +103,8 @@
     # the block is in a `when` that we just made false by updating `finished_state_index`.
 
 - name: Phase 2 of migration
-  # After PendingUpdates (index 1) but before Reboot (index 15)
-  when: finished_state_index|int >= 1 and finished_state_index|int < 15
+  # After PendingUpdates (index 2) but before Reboot (index 15)
+  when: finished_state_index|int >= 2 and finished_state_index|int < 15
   block:
     # Start the systemd service manually to avoid waiting for the timer to pick it up
     - name: Resume upgrade systemd service
@@ -154,8 +154,8 @@
     # the block is in a `when` that we just made false by updating `finished_state_index`.
 
 - name: Phase 2.5 of migration (for SSH-over-Tor users)
-  # After PendingUpdates (index 1) but before Reboot (index 15)
-  when: enable_ssh_over_tor and finished_state_index|int >= 1 and finished_state_index|int < 15
+  # After PendingUpdates (index 2) but before Reboot (index 15)
+  when: enable_ssh_over_tor and finished_state_index|int >= 2 and finished_state_index|int < 15
   block:
     # Same as above, this will most likely fail as unreachable when the server
     # actually reboots.
