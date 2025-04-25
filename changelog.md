@@ -2,6 +2,29 @@
 
 ## 2.13.0~rc1
 
+## 2.12.2
+
+### Ubuntu 24.04 (Noble) upgrade
+
+* Update Noble migration check to prevent migration attempt on Noble systems (#7502)
+* Update Noble migration script to verify state of Ethernet interfaces (#7497)
+* Update OSSEC configuration to suppress erroneous APT messages (#7496)
+* Enable first phase of automated Noble upgrades (#7492)
+
+### Web applications and APIs
+
+* Upgrade `pyo3` from 0.18.0 to 0.24.1 and update `redwood` to use its bound API (#7432)
+* Dependency updates:
+  * `Jinja2` from 3.1.3 to 3.1.6 (#7479)
+
+### Operations
+
+* Update admin tools to trim newlines from inputted GPG fingerprints (#7474)
+
+### Development
+
+* Add version constraint for `setuptools-scm` to 8.1.0 on Focal builds (#7509) 
+
 ## 2.12.1
 
 Note: this is an Admin Workstation-only release. Servers will not receive an update.
